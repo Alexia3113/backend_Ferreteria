@@ -26,8 +26,8 @@ app.use(cors({
         'http://localhost:5173',
         'http://localhost:4000',
         'http://localhost',
-        process.env.BASE_URL_BACK
-
+        process.env.BASE_URL_BACK,
+        process.env.BASE_URL_FRONTEND,
     ],
     credentials:true
 }));
