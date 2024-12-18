@@ -4,7 +4,9 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
+dotenv.config();
 //obtenemos el nombre del archivo actual de la variable de entorno meta.url
 //y posteriormente el nombre de la carpeta actual de la app que en este caso es
 //src
@@ -20,7 +22,13 @@ import imagesRoutes from './routes/images.routes.js'
 
 const app=express();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:4000',
+        'http://localhost',
+        process.env.BASE_URL_BACK
+
+    ],
     credentials:true
 }));
 app.use(morgan('dev'));

@@ -35,8 +35,8 @@ export const register = async (req, res)=>{
         const userSaved = await newUser.save()
         const token = await createAccessToken({id: userSaved._id})
         res.cookie('token', token,{
-            sameSite: 'lax', //para indicar que el back y el front estan en distintos servidores
-            //secure:true //activamos esta opcion cuando hagamos el deployment, para que funcione el https
+            sameSite: 'none', //para indicar que el back y el front estan en distintos servidores
+            secure:true //activamos esta opcion cuando hagamos el deployment, para que funcione el https
         });
         res.json({
             id: userSaved._id,
@@ -68,8 +68,8 @@ export const login = async (req, res) =>{
         }
         const token = await createAccessToken({id: userFound._id})
         res.cookie('token', token,{
-            sameSite: 'lax', //para indicar que el back y el front estan en distintos servidores
-            //secure:true //activamos esta opcion cuando hagamos el deployment, para que funcione el https
+            sameSite: 'none', //para indicar que el back y el front estan en distintos servidores
+            secure:true //activamos esta opcion cuando hagamos el deployment, para que funcione el https
         });
         const roleAdmin = await Role.findOne({role: roleadmin})
         let isAdmin= false;
